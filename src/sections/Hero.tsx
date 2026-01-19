@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, ArrowUpRight, Terminal } from "lucide-react";
@@ -94,7 +92,7 @@ export default function Hero(): React.JSX.Element {
                 href="/chandan-resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                className="group flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/2"
               >
                 View Resume
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -108,7 +106,7 @@ export default function Hero(): React.JSX.Element {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="rounded-full border border-white/15 bg-white/5 p-3 text-white/60 hover:text-white transition-colors"
+                    className="group rounded-full border border-white/10 bg-white/5 p-3.5 text-white/40 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white"
                   >
                     <Icon size={18} />
                   </a>

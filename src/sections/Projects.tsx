@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import tokenImage from "../assets/token-system.webp";
-import jobFinderImage from "../assets/jobfinder.webp";
+import vessifyImage from "../assets/nessify.png";
 import worldExplorerImage from "../assets/world-explorer.webp";
 import type { Transition } from "framer-motion";
 
@@ -66,29 +66,29 @@ const PROJECTS: Project[] = [
     },
   },
 
-  {
-    title: "Job Finder Platform",
-    description:
-      "A role-based hiring platform that enables employers to post jobs and manage applications while allowing users to apply and track status.",
-    tags: ["React", "Node.js", "MongoDB", "RBAC", "Authentication"],
-    liveUrl: "https://job-finder-mern-eight.vercel.app/",
-    githubUrl: "https://github.com/chandan-1427/Job-Finder-MERN",
-    image: jobFinderImage,
-    story: {
-      challenge:
-        "Job portals often lack clear separation between employer and candidate workflows, leading to access control and usability issues.",
-      role:
-        "Full Stack Developer. Implemented authentication, role-based access control, and end-to-end job application flows.",
-      process:
-        "Structured backend APIs with Express, secured routes using JWT, and built distinct frontend experiences for employers and job seekers.",
-      solution:
-        "Introduced clear role separation with protected routes and centralized authorization logic to manage permissions cleanly.",
-      impact:
-        "Established a maintainable foundation for job posting, application review, and hiring decisions.",
-      lessons:
-        "Strengthened my understanding of role-based systems and the importance of keeping responsibilities clearly separated.",
-    },
+{
+  title: "Vessify — Fintech Statement Text Extractor",
+  description:
+    "A full-stack statement parser that converts raw bank/UPI transaction text into structured data with authentication and persistent storage.",
+  tags: ["Next.js", "Hono", "PostgreSQL", "Prisma", "Better Auth", "Shadcn UI"],
+  liveUrl: "https://vessify-six.vercel.app/",
+  githubUrl: "https://github.com/chandan-1427/text-extractor",
+  image: vessifyImage,
+  story: {
+    challenge:
+      "Raw bank/UPI statement messages are inconsistent and unstructured, making it difficult to reliably extract transactions into a clean format that users can store and review.",
+    role:
+      "Full Stack Developer. Built the end-to-end system including parsing logic, API design, authentication, database schema, and UI.",
+    process:
+      "Designed backend APIs with Hono, implemented auth + session management using Better Auth, modeled relational storage using PostgreSQL + Prisma, and built a clean interactive UI with Next.js and Shadcn UI.",
+    solution:
+      "Built a structured extraction pipeline that normalizes statement input into consistent transaction objects, secured the workflow with authenticated sessions, and stored results for future access using a relational schema.",
+    impact:
+      "Delivered a production-ready fintech assignment project that demonstrates full-stack ownership: parsing, persistence, authentication, and a polished UI experience.",
+    lessons:
+      "Learned how to build reliable text parsing flows, model structured financial data in PostgreSQL, and integrate a modern auth system with a lightweight backend framework.",
   },
+},
 
   {
     title: "World Explorer",
