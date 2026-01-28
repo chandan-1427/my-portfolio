@@ -115,31 +115,46 @@ export default function Hero(): React.JSX.Element {
             </div>
           </motion.div>
 
-          {/* RIGHT: Image */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1 }}
-            className="relative flex justify-center"
-          >
-            <div className="relative h-[360px] w-[300px] sm:h-[440px] sm:w-[380px] overflow-hidden rounded-[32px] border border-white/20 bg-neutral-900 p-3">
-              <img
-                src={profileImage}
-                alt="Chandan profile"
-                loading="lazy"
-                fetchPriority="high"
-                decoding="async"
-                width={380}
-                height={440}
-                className="h-full w-full rounded-[22px] object-cover"
-              />
+{/* RIGHT: Image */}
+<motion.div
+  initial={false}
+  animate={{ opacity: 1 }}
+  className="relative flex justify-center"
+>
+  {/* Outer glow wrapper */}
+  <div className="relative">
+    {/* Soft ambient glow */}
+    <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-tr from-indigo-500/10 via-purple-500/5 to-transparent blur-2xl" />
 
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                <p className="text-sm text-white/60">
-                  Focused on long-term growth, continuous learning, and building meaningful software.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+    {/* Outer frame */}
+    <div className="relative rounded-[32px] border border-white/15 bg-neutral-900/80 p-[5px]">
+      {/* Inner frame */}
+      <div className="relative h-[360px] w-[300px] sm:h-[440px] sm:w-[380px] overflow-hidden rounded-[28px] bg-black">
+        <img
+          src={profileImage}
+          alt="Chandan profile"
+          loading="lazy"
+          fetchPriority="high"
+          decoding="async"
+          width={380}
+          height={440}
+          className="h-full w-full object-cover"
+        />
+
+        {/* Subtle film grain / overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+        {/* Caption */}
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <p className="text-xs leading-relaxed text-white/60">
+            Focused on long-term growth, continuous learning, and building
+            meaningful software.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</motion.div>
 
         </div>
       </div>

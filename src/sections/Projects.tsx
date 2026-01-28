@@ -11,14 +11,15 @@ import {
   CircleOff,
   BookOpen,
 } from "lucide-react";
+
+/* ---------------- Animation ---------------- */
+
 interface FadeUpProps {
   initial: { opacity: number; y: number };
   whileInView: { opacity: number; y: number };
   viewport: { once: boolean; margin: string };
   transition: Transition;
 }
-
-/* ---------------- Animation ---------------- */
 
 const fadeUp: FadeUpProps = {
   initial: { opacity: 0, y: 16 },
@@ -36,28 +37,28 @@ export default function Projects(): React.JSX.Element {
   const hiddenProjects = PROJECTS.slice(3);
 
   return (
-    <section id="projects" className="bg-[#030303] py-24 sm:py-28">
+    <section id="projects" className="bg-[#030303] py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <motion.div {...fadeUp} className="mb-14 border-l border-white/10 pl-6">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-white/60">
+        <motion.div {...fadeUp} className="mb-12 border-l border-white/10 pl-5">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-white/60">
             Featured Projects
           </h2>
-          <p className="mt-4 max-w-2xl text-lg font-semibold text-white/90 sm:text-2xl">
+          <p className="mt-3 max-w-2xl text-lg font-semibold text-white/90 sm:text-2xl">
             Projects that show how I solve problems and build reliable systems.
           </p>
         </motion.div>
 
-        <div className="space-y-20">
+        <div className="space-y-12">
           {visibleProjects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
 
           {hiddenProjects.length > 0 && (
-            <div className="pt-8">
+            <div className="pt-6">
               <button
                 onClick={() => setExpanded((v) => !v)}
-                className="mx-auto block rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white/70 hover:bg-white/[0.08]"
+                className="mx-auto block rounded-full border border-white/10 bg-white/[0.04] px-6 py-2.5 text-[11px] font-bold uppercase tracking-widest text-white/70 hover:bg-white/[0.08]"
               >
                 {expanded ? "Show Less Projects" : "Show More Projects"}
               </button>
@@ -72,7 +73,7 @@ export default function Projects(): React.JSX.Element {
                 transition={{ duration: 0.45, ease: "easeOut" }}
                 className="overflow-hidden"
               >
-                <div className="mt-20 space-y-20">
+                <div className="mt-12 space-y-12">
                   {hiddenProjects.map((project, index) => (
                     <ProjectCard
                       key={project.title}
@@ -118,7 +119,7 @@ function Info({
         <Icon size={14} />
         {label}
       </h4>
-      <p className="mt-2 text-white/50">{text}</p>
+      <p className="mt-2 text-sm text-white/55">{text}</p>
     </div>
   );
 }
@@ -135,44 +136,27 @@ function ProjectCard({
   return (
     <motion.div
       {...fadeUp}
-      transition={{ ...fadeUp.transition, delay: index * 0.05 }}
-      className="rounded-2xl border border-white/10 bg-white/[0.015]"
+      transition={{ ...fadeUp.transition, delay: index * 0.04 }}
+      className="rounded-xl border border-white/10 bg-white/[0.015]"
     >
-      {/* HEADER / COLLAPSED VIEW */}
-      <div className="px-6 py-5">
-        <div className="flex items-start justify-between gap-6">
-          {/* Left content (title + desc + tags) */}
+      {/* HEADER */}
+      <div className="px-5 py-4">
+        <div className="grid gap-3 sm:flex sm:items-start sm:justify-between sm:gap-6">
+          {/* Title + desc */}
           <button
             onClick={() => setOpen((v) => !v)}
-            className="flex-1 text-left"
+            className="text-left"
           >
-            <h3 className="text-lg font-semibold text-white">
+            <h3 className="text-base font-semibold text-white sm:text-lg">
               {project.title}
             </h3>
-            <p className="mt-1 max-w-3xl text-sm text-white/55">
+            <p className="mt-1 text-sm text-white/55">
               {project.description}
             </p>
-
-            <div className="mt-3 flex flex-wrap gap-2">
-              {project.tags.slice(0, 5).map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/50"
-                >
-                  {tag}
-                </span>
-              ))}
-              {project.tags.length > 5 && (
-                <span className="text-[10px] text-white/40">
-                  +{project.tags.length - 5} more
-                </span>
-              )}
-            </div>
           </button>
 
-          {/* Right actions */}
-          <div className="flex shrink-0 items-center gap-2 pt-1">
-            {/* Live */}
+          {/* Actions */}
+          <div className="flex flex-wrap items-center gap-2">
             <a
               href={project.liveUrl}
               target="_blank"
@@ -182,8 +166,6 @@ function ProjectCard({
             >
               Live
             </a>
-
-            {/* GitHub */}
             <a
               href={project.githubUrl}
               target="_blank"
@@ -193,19 +175,34 @@ function ProjectCard({
             >
               Code
             </a>
-
-            {/* View / Close */}
             <button
               onClick={() => setOpen((v) => !v)}
-              className="ml-1 text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white"
+              className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white"
             >
               {open ? "Close" : "View"}
             </button>
           </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 sm:col-span-full">
+            {project.tags.slice(0, 5).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/50"
+              >
+                {tag}
+              </span>
+            ))}
+            {project.tags.length > 5 && (
+              <span className="text-[10px] text-white/40">
+                +{project.tags.length - 5} more
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* EXPANDED CONTENT */}
+      {/* EXPANDED */}
       <motion.div
         initial={false}
         animate={open ? "open" : "closed"}
@@ -216,9 +213,9 @@ function ProjectCard({
         transition={{ duration: 0.35, ease: "easeOut" }}
         className="overflow-hidden"
       >
-        <div className="px-6 pb-6 pt-2 space-y-8">
+        <div className="px-5 pb-5 pt-2 space-y-8">
           {/* Image */}
-          <div className="aspect-[16/9] overflow-hidden rounded-xl border border-white/10 bg-neutral-900">
+          <div className="aspect-[16/9] overflow-hidden rounded-lg border border-white/10 bg-neutral-900">
             <img
               src={project.image}
               alt={project.title}
@@ -236,7 +233,7 @@ function ProjectCard({
           </div>
 
           {/* Lessons */}
-          <div className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
+          <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
             <h4 className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/40">
               <BookOpen size={14} /> Lessons Learned
             </h4>
@@ -245,13 +242,13 @@ function ProjectCard({
             </p>
           </div>
 
-          {/* Links */}
+          {/* Footer links */}
           <div className="flex gap-3">
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-xs font-bold text-black"
+              className="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-xs font-bold text-black"
             >
               Live <ExternalLink size={14} />
             </a>
@@ -259,14 +256,19 @@ function ProjectCard({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.05] px-4 py-2 text-xs font-bold text-white"
+              className="flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.05] px-4 py-2 text-xs font-bold text-white"
             >
               GitHub <Github size={14} />
             </a>
+                        <button
+              onClick={() => setOpen((v) => !v)}
+              className="text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white"
+            >
+              {open ? "Close" : "View"}
+            </button>
           </div>
         </div>
       </motion.div>
     </motion.div>
   );
 }
-
